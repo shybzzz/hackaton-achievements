@@ -1,3 +1,5 @@
+@import '../../styles/vars.scss';
+
 .main-page {
   background-image: url('../../assets/images/background.jpg');
   background-repeat: no-repeat;
@@ -11,7 +13,7 @@
   position: absolute;
   left: 113px;
   bottom: 139px;
-  background-color: #d10a11;
+  background-color: $coop-red;
   width: $size;
   height: $size;
   border-radius: $size/2;
