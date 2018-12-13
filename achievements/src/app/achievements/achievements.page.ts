@@ -1,3 +1,5 @@
+import { AchievementsService } from './../services/achievements.service';
+import { MyAchievementGroup } from './../model/my-achievement-group';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-achievements',
@@ -5,19 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./achievements.page.scss']
 })
 export class AchievementsPage implements OnInit {
-  achievementGroups = [
-    {
-      name: 'Ecology',
-      cssClass: 'ecolog',
-      achievements: [{ name: 'Lover', value: 20, total: 100 }]
-    }
-  ];
-  show: 'all' | 'my' = 'my';
-  constructor() {}
+  show: 'all' | 'mine' = 'mine';
+  constructor(public achievementService: AchievementsService) {}
 
   ngOnInit() {}
 
-  setAchievents(v) {
-    console.log(v);
+  setAchievents() {
+    this.achievementService.show(this.show);
   }
 }

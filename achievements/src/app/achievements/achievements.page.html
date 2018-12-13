@@ -14,19 +14,21 @@
     <ion-item>
       <ion-label>Show</ion-label>
       <ion-select [(ngModel)]="show" (ngModelChange)="setAchievents($event)">
-        <ion-select-option value="my" [selected]="true">Min</ion-select-option>
-        <ion-select-option value="all">Alle</ion-select-option>
+        <ion-select-option value="mine">Min</ion-select-option>
+        <ion-select-option value="all" [selected]="true"
+          >Alle</ion-select-option
+        >
       </ion-select>
     </ion-item>
 
-    <ng-container *ngFor="let g of achievementGroups">
+    <ng-container *ngFor="let g of achievementService.filteredAchievements">
       <ion-list-header>
-        <div class="achievement-group" [ngClass]="g.cssClass"></div>
-        {{ g.name }}
+        <div class="achievement-group" [ngClass]="g.group.cssClass"></div>
+        {{ g.group.name }}
       </ion-list-header>
       <ng-container *ngFor="let a of g.achievements">
         <ion-item>
-          <ion-label>{{ a.name }}</ion-label>
+          <ion-label>{{ a.achievement.name }}</ion-label>
           <ion-label>
             <div class="progress">
               <div

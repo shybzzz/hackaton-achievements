@@ -40,3 +40,25 @@
   font-weight: bold;
   padding-bottom: 8px;
 }
+
+.buttons-pane {
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  .round {
+    $size: 40px;
+    width: $size;
+    height: $size;
+    border-color: $coop-dark-red;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $size/2;
+    background-color: rgba($color: $coop-red, $alpha: 0.5);
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+  }
+}

@@ -1,7 +1,6 @@
+import { Achievement } from './achievement';
 export interface AchievementsGroup {
   name: string;
-  achievements: {
-    name: string;
-    steps?: { value: number }[];
-  };
+  achievements: Achievement[];
+  cssClass: string;
 }

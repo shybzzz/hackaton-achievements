@@ -1,11 +1,22 @@
 <ion-content>
   <div class="main-page">
-    <div class="achievement" [routerLink]="['/achievements']">
+    <div
+      *ngIf="showAchievementButton"
+      class="achievement"
+      [routerLink]="['/achievements']"
+    >
       <div class="value">
         1
         <div class="ecolog-group"></div>
       </div>
       <div class="label">Præstation</div>
+    </div>
+
+    <div class="buttons-pane">
+      <div *ngIf="showButton(1)" class="round" (click)="inrease(2, 1)">1</div>
+      <div *ngIf="showButton(2)" class="round" (click)="inrease(5, 2)">2</div>
+      <div *ngIf="showButton(3)" class="round" (click)="inrease(10, 3)">3</div>
+      <!-- <div class="round">V</div> -->
     </div>
   </div>
 </ion-content>

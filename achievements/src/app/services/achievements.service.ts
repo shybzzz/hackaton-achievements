@@ -1,18 +1,46 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AchievementsGroup } from '../model/achievements-group';
 import { Http } from '@angular/http';
-import { Subject } from 'rxjs';
+import { ReplaySubject, BehaviorSubject } from 'rxjs';
+import { map, combineLatest } from 'rxjs/operators';
+import { MyAchievementGroup } from '../model/my-achievement-group';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AchievementsService implements OnInit {
-  allAchievements$ = new Subject<AchievementsGroup[]>();
+export class AchievementsService {
+  achievements: AchievementsGroup[] = [];
+  allMyAchievements: MyAchievementGroup[];
 
-  constructor(private http: Http) {}
-  ngOnInit() {
+  filteredAchievements: MyAchievementGroup[];
+
+  hiddenButtons = [];
+
+  constructor(private http: Http) {
     this.http.get('assets/data/achievements.json').subscribe(r => {
-      this.allAchievements$.next(r.json());
+      const achievements = r.json();
+      this.achievements = achievements;
+      this.allMyAchievements = achievements.map(group => ({
+        group,
+        achievements: group.achievements.map(achievement => {
+          const steps = achievement.steps;
+          let total = 0;
+          if (steps) {
+            steps.forEach(s => {
+              total += s.value;
+            });
+          }
+          return { achievement, total, value: 0 };
+        })
+      }));
     });
+  }
+
+  show(r: 'all' | 'mine' = 'mine') {
+    const myAchievements = this.allMyAchievements;
+    this.filteredAchievements =
+      r === 'mine'
+        ? myAchievements.filter(g => g.achievements.some(a => !!a.value))
+        : [...myAchievements];
   }
 }
