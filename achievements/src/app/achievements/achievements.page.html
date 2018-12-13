@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Achievements</ion-title>
+    <ion-title>Præstation</ion-title>
     <ion-buttons slot="start">
       <ion-button [routerLink]="['/home']"
         ><ion-icon name="arrow-back"></ion-icon
@@ -9,4 +9,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding> {{ r | json }} </ion-content>
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Show</ion-label>
+      <ion-select [(ngModel)]="show" (ngModelChange)="setAchievents($event)">
+        <ion-select-option value="my" [selected]="true">Min</ion-select-option>
+        <ion-select-option value="all">Alle</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ng-container *ngFor="let g of achievementGroups">
+      <ion-list-header>
+        <div class="achievement-group" [ngClass]="g.cssClass"></div>
+        {{ g.name }}
+      </ion-list-header>
+      <ng-container *ngFor="let a of g.achievements">
+        <ion-item>
+          <ion-label>{{ a.name }}</ion-label>
+          <ion-label>
+            <div class="progress">
+              <div
+                class="value"
+                [style.width]="(a.value * 100) / a.total + '%'"
+              ></div>
+            </div>
+          </ion-label>
+          <ion-badge class="badge"> {{ a.value }} / {{ a.total }} </ion-badge>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+  </ion-list>
+</ion-content>

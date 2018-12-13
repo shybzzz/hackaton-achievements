@@ -7,5 +7,14 @@
         "steps": [{ "value": 2 }, { "value": 5 }, { "value": 10 }]
       }
     ]
+  },
+
+  {
+    "name": "Traveler",
+    "achievements": [
+      {
+        "name": "Pedestrian"
+      }
+    ]
   }
 ]

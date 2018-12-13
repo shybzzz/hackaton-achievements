@@ -1,0 +1,28 @@
+@import '../../styles/vars.scss';
+
+.achievement-group {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+}
+
+.progress {
+  $height: 1em;
+  width: 100%;
+  height: $height;
+  position: relative;
+  border-color: $coop-dark-red;
+  border-width: 1px;
+  border-style: solid;
+
+  .value {
+    position: absolute;
+    height: 100%;
+    background-color: $coop-red;
+  }
+}
+
+.badge {
+  background-color: $coop-red;
+  margin-left: 5px;
+}

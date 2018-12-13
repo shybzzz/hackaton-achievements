@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-
 @Component({
   selector: 'app-achievements',
   templateUrl: './achievements.page.html',
   styleUrls: ['./achievements.page.scss']
 })
 export class AchievementsPage implements OnInit {
-  r;
-  constructor(private http: Http) {}
+  achievementGroups = [
+    {
+      name: 'Ecology',
+      cssClass: 'ecolog',
+      achievements: [{ name: 'Lover', value: 20, total: 100 }]
+    }
+  ];
+  show: 'all' | 'my' = 'my';
+  constructor() {}
 
-  ngOnInit() {
-    this.http.get('assets/data/achievements.json').subscribe(r => {
-      this.r = r.json();
-    });
+  ngOnInit() {}
+
+  setAchievents(v) {
+    console.log(v);
   }
 }
