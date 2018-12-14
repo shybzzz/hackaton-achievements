@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Præstation</ion-title>
+    <ion-title>Achievement</ion-title>
     <ion-buttons slot="start">
       <ion-button [routerLink]="['/home']"
         ><ion-icon name="arrow-back"></ion-icon
@@ -14,30 +14,37 @@
     <ion-item>
       <ion-label>Show</ion-label>
       <ion-select [(ngModel)]="show" (ngModelChange)="setAchievents($event)">
-        <ion-select-option value="mine">Min</ion-select-option>
-        <ion-select-option value="all" [selected]="true"
-          >Alle</ion-select-option
-        >
+        <ion-select-option value="mine">Favourite</ion-select-option>
+        <ion-select-option value="all" [selected]="true">All</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ng-container *ngFor="let g of achievementService.filteredAchievements">
       <ion-list-header>
-        <div class="achievement-group" [ngClass]="g.group.cssClass"></div>
-        {{ g.group.name }}
+        <div>
+          <div class="achievement-group" [ngClass]="g.group.cssClass"></div>
+          {{ g.group.name }}
+        </div>
+
+        <!-- {{ g.group.reward }} -->
       </ion-list-header>
       <ng-container *ngFor="let a of g.achievements">
         <ion-item>
-          <ion-label>{{ a.achievement.name }}</ion-label>
+          <ion-label
+            >{{ a.achievement.name }}
+            <p>{{ a.achievement.description }}</p></ion-label
+          >
           <ion-label>
             <div class="progress">
-              <div
-                class="value"
-                [style.width]="(a.value * 100) / a.total + '%'"
-              ></div>
+              <div *ngIf="a.value" class="value" [style.width]="getValue(a)">
+                {{ getValue(a) }}
+              </div>
             </div>
           </ion-label>
-          <ion-badge class="badge"> {{ a.value }} / {{ a.total }} </ion-badge>
+
+          <!--
+            <ion-badge class="badge"> {{ a.value }} / {{ a.total }} </ion-badge>
+          -->
         </ion-item>
       </ng-container>
     </ng-container>

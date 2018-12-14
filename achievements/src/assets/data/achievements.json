@@ -1,19 +1,76 @@
 [
   {
     "name": "Ecology",
+    "reward": "voucher",
+    "cssClass": "ecology",
     "achievements": [
       {
-        "name": "Lover",
-        "steps": [{ "value": 2 }, { "value": 5 }, { "value": 10 }]
+        "name": "Pedestrian",
+        "description": "Make 1000 steps in a store",
+        "steps": [
+          {
+            "value": 200
+          },
+          {
+            "value": 300
+          },
+          {
+            "value": 500
+          }
+        ]
+      },
+      {
+        "name": "Hot Avostreak`o",
+        "description": "Make purchases of avocado several days in a row",
+        "steps": [
+          {
+            "value": 3
+          },
+          {
+            "value": 5
+          },
+          {
+            "value": 10
+          }
+        ]
+      },
+      {
+        "name": "Cup Holder",
+        "description": "purchase only paper or ceramic cups in your next 2 baskets",
+        "steps": [
+          {
+            "value": 2
+          },
+          {
+            "value": 5
+          },
+          {
+            "value": 10
+          }
+        ]
       }
     ]
   },
-
   {
-    "name": "Traveler",
+    "name": "Loyalist",
+    "reward": "voucher",
+    "cssClass": "loyalist",
     "achievements": [
       {
-        "name": "Pedestrian"
+        "name": "Early Bird",
+        "description": "Make a purchase on Monday before 08:00"
+      },
+      {
+        "name": "Night Owl",
+        "description": "Make a purchase on Saturday after 20:00"
+      },
+      {
+        "name": "WOWcher!",
+        "description": "use a voucher"
+      },
+      {
+        "name": "Big Basket Theory",
+        "description": "make a purchase greater than KR 500"
       }
     ]
   }

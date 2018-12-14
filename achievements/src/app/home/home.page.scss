@@ -24,15 +24,12 @@
   .ecolog-group {
     height: 1em;
     width: 1em;
-    background-image: url('../../assets/images/achievements/ecolog-group.png');
-    background-repeat: no-repeat;
-    background-size: cover;
     display: inline-block;
   }
 }
 
 .label {
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 .value {
@@ -44,7 +41,7 @@
 .buttons-pane {
   width: 100%;
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   .round {
     $size: 40px;
     width: $size;
